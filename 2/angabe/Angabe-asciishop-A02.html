@@ -1,0 +1,641 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>EPROG-LU - Aufgabe asciishop-A02</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15">
+<style type="text/css"><!--
+body {
+background-color: #FFFFFF;
+font-family:verdana,geneva,arial,helvetica,sans-serif;
+font-size:11px;
+color:#000000;
+}
+
+table {
+font-family:verdana,geneva,arial,helvetica,sans-serif;
+font-size:11px;
+border-style:none;
+}
+
+td {
+border-color:#000000;
+border-style:none;
+border-width:1px;
+vertical-align:middle;
+padding-left:0px;
+padding-right:0px;
+padding-bottom:0px;
+padding-top:0px;
+}
+// --></style>
+</head>
+<body link="#0000EE" vlink="#551A8B" alink="#FF0000">
+
+
+<h1>Beispiel Angabe</h1>
+
+<table cellspacing="1" cellpadding="5" width="100%">
+<tr>
+<td><b>K&uuml;rzel:</b></td><td>asciishop-A02</td>
+<td><b>Runde:</b></td><td>2</td>
+</tr>
+<tr>
+<td><b>Name:</b></td><td>AsciiShop, Runde#02</td>
+<td><b>Evaluieren als:</b></td><td>Java</td>
+</tr>
+<tr>
+<td><b>Kette:</b></td><td>Asciishop A</td>
+<td><b>Eingabe:</b></td><td>String</td>
+</tr>
+<tr>
+<td><b>Kategorie:</b></td><td>Bildverarbeitung</td>
+<td><b>Ausgabe:</b></td><td>String</td>
+</tr>
+</table>
+<p>
+
+
+<b>Mitgelieferte Datei(en):</b> <br>
+<b>Abzugebende Datei(en):</b> AsciiShop.java<br>
+<b>Optional abzugebende Datei(en):</b> <br>
+<b>Ausf&uuml;hrbar:</b> AsciiShop<br>
+
+<p>
+
+
+Die Klasse <em>AsciiShop</em> ist zu erstellen und soll eine
+ausf&uuml;hrbare Klasse sein und muss daher die <tt>public static void main(String args[])</tt>
+Methode beinhalten.
+<br/>
+<br/>
+
+Ihr Programm wird automatisch auf Korrektheit &uuml;berpr&uuml;ft.
+Die &Uuml;berpr&uuml;fung erfolgt durch die Ausf&uuml;hrung der als
+ausf&uuml;hrbar bezeichneten Klasse (<em>AsciiShop</em>).
+
+
+<H2>Kurzbeschreibung:</H2>
+<p>Das Programm liest eine angegebene Anzahl von Zeilen eines verschl&uuml;sselten ASCII-Bildes ein. Dabei gilt es zu &uuml;berpr&uuml;fen, ob alle Zeilen gleich lang sind. Anschlie&szlig;end kann ein decode-Befehl eingegeben werden, dessen Parameter den zum Entschl&uuml;sseln des ASCII-Bildes ben&ouml;tigten Schl&uuml;ssel besitzt. Dieser wird auf seine G&uuml;ltigkeit &uuml;berpr&uuml;ft. Abschlie&szlig;end wird das entschl&uuml;sselte Bild sowie seine Breite und H&ouml;he ausgegeben.</p>
+
+<h2>Lernziele:</h2>
+<ul>
+<li>Algorithmen</li>
+<li>Verwenden von Bibliotheksmethoden</li>
+<li>Typumwandlungen</li>
+</ul>
+
+<table cellspacing="3" cellpadding="0" style="margin-top:30px; width:100%; border: 3px solid #D3D9E3;">
+<tr>
+<td class="iopairIn" style="text-align:center;padding:10px; width:25%;" ><a href="#aufgabenstellung">Aufgabenstellung</a></td>
+<td class="iopairIn" style="text-align:center;padding:10px; width:25%;" ><a href="#klassenundmethoden">Klassen und Methoden</a></td>
+<td class="iopairIn" style="text-align:center;padding:10px; width:25%;" ><a href="#eingabedaten">Eingabedaten</a></td>
+<td class="iopairIn" style="text-align:center;padding:10px; width:25%;" ><a href="#ausgabedaten">Ausgabedaten</a></td>
+
+</tr>
+<tr>
+<td class="iopairIn" style="text-align:center;padding:10px; width:25%;"><a href="#hinweise">Hinweise</a></td>
+<td class="iopairIn" style="text-align:center;padding:10px; width:25%;"><a href="http://tosca.inflab.tuwien.ac.at/eprip/faq.do">FAQ</a></td>
+<td class="iopairIn" style="text-align:center;padding:10px; width:25%;"><a href="#fehlerbehandlung">Fehlerbehandlung</a></td>
+<td class="iopairIn" style="text-align:center;padding:10px; width:25%;"><a href="#testen">Testen</a></td>
+</tr>
+</table>
+
+
+<p>&nbsp;</p>
+
+<a id="aufgabenstellung" name="aufgabenstellung"></a>
+<!--
+
+
+<H2>Allgemeine Hinweise:</H2>
+<ul>
+<li>
+<b>Die Gro&szlig;- und Kleinschreibung ist relevant!</b> Beachten Sie ganz genau die Angaben zu den
+Funktions- und Dateinamen.
+</li>
+<li>
+Die abzugebende Datei(en) m&uuml;ssen f&uuml;r die Abgabe ausnahmslos <b>archiviert</b> werden.
+Das Format der Archiv muss <b>Zip</b> sein, Programme wie WinZip, WinRar, jar (kommt mit der Java JDK Distribution)
+k&ouml;nnen Sie f&uuml;r die Archivierung verwenden. Dateiendung des Archivs muss .zip oder .jar sein.
+<br/> jar syntax:
+<ul>
+<li>
+Archivierung: <b><tt>jar Mcvf archiv_name.jar *</tt></b> (oder einzelne Dateien statt <tt>*</tt>)
+</li>
+<li>
+Inhalte anzeigen: <b><tt>jar tf archiv_name.jar</tt></b>
+</li>
+<li>
+Extrahieren: <b><tt>jar xvf archiv_name.jar</tt></b>
+</li>
+</ul>
+</li>
+<li>
+Ihr Programm darf nur genau jene Ausgabedaten liefern, die in der Spezifikation 
+verlangt werden. Die Ausgaben Ihres Programms werden automatisch mit
+Referenzdaten verglichen; etwaige Abweichungen f&uuml;hren zu Punkteabz&uuml;gen!
+</li>
+
+<li>
+Testen Sie Ihr Programm vor der Abgabe mit den mitgelieferten Eingabedateien.
+Geben Sie Ihre L&ouml;sung erst ab, wenn die Ausgaben Ihres Programms mit der
+ebenfalls mitgelieferten Ausgabedatei &uuml;bereinstimmen! Testen Sie Ihr
+Programm auch mit anderen Eingabedaten.<br/>
+</li>
+
+<li>
+Ihr Programm muss <b>immer</b> den Prozess Return Code 0 liefern. Verwenden Sie daher
+keine <code>System.exit(1)</code>-artige Unterbrechungen in Ihrem Programm.
+Am besten verzichten Sie v&ouml;llig auf System.exit() Aufrufe da dadurch der
+laufende JVM gewaltsam terminiert wird.<br/>
+</li>
+
+
+<li>
+Verwenden Sie die Klasse <code>Scanner</code> zum Einlesen von Daten.<br/>
+F&uuml;r die Ausgabe k&ouml;nnen Sie die Methoden <code>System.out.print</code> und
+<code>System.out.println</code> benutzen. Zum Erzeugen formatierter Ausgaben k&ouml;nnen
+Sie auch <code>System.out.printf</code> benutzen (wird im Allgemeinen aber nicht ben&ouml;tigt).
+Beachten Sie, dass wir bei der Beurteilung einen US-amerikanischen Region- und
+Spracheinstellungssatz (<i>locale</i>) f&uml;r die Beurteilung benutzen.
+Das bedeutet, dass wir f&uuml;r die Darstellung von <code>double</code>-Werten auch bei
+der Ein-/Ausgabe immer den Dezimalpunkt (und nicht Beistrich) benutzen
+(z.B. 3.14159 und nicht 3,14159). Falls Sie auf Ihrem Rechner eine andere Einstellung haben,
+k&ouml;nnen Sie zum Testen zuhause auch die Darstellung mit Beistrich benutzen (ist aber nicht
+konsistent mit den mitgelieferten Ein-/Ausgabe-Paaren) oder beim Aufruf von Java auch folgenden Befehl
+benutzen:
+<ul>
+<li><b><code>java -Duser.language=en -Duser.country=US AsciiShop</code></b></li>
+</ul>
+Sie werden sehen, dass dann w&auml;hrend des Ablaufs des Programmes bei der Eingabe
+von <code>double</code>-Werten eine Darstellung mit Dezimalpunkt erwartet wird.
+Wenden Sie sich bei Problemen mit den Ein-/Ausgabefunktionen bitte an die Tutoren im Labor.
+</li>
+<li>
+Programme, die Packages oder Klassen au&szlig;erhalb der verwendeten &Uuml;bungsumgebung 
+(<a href="http://java.sun.com/j2se/1.5.0/download.jsp" target="_blank">J2SE Development Kit (JDK) 5.0</a>)
+verwenden, k&ouml;nnen von uns nicht getestet und beurteilt werden!<br/>
+</li>
+
+<li>
+Schreiben Sie Ihr Programm m&ouml;glichst allgemein und kommentieren Sie es
+gut. Die Kommentare im Programm gelten als Dokumentation.
+Die Dokumentation Ihrer Programme wird ebenfalls beurteilt. Es ist
+erlaubt/erw&uuml;nscht die Kommentare javadoc-konform zu erstellen.<br/>
+</li>
+</ul>
+
+
+<H2>Spezifikationsspezifische Hinweise:</H2>
+-->
+
+
+<H2>Aufgabenstellung:</H2>
+<p>In der Informatik kommt der <a href="http://de.wikipedia.org/wiki/Kryptographie">Kryptographie</a> eine wichtige Rolle zu. Die &auml;lteste bekannte M&ouml;glichkeit der Verschl&uuml;sselung ist die sogenannte <a href="http://de.wikipedia.org/wiki/Transposition_(Kryptographie)">Transposition</a>. Bei diesem sehr einfachen Verfahren werden die einzelnen Zeichen einer Zeichenkette nach einem bestimmten Verfahren untereinander vertauscht (permutiert).</p>
+
+<h3>Einlesen des Bildes</h3>
+<p>Wie bereits in Runde 1 gilt es, ein ASCII-Bild von der Standardeingabe einzulesen. Im Unterschied zur vorherigen Runde ist dieses jedoch verschl&uuml;sselt. Vor dem Einlesen des verschl&uuml;sselten Bildes wird zus&auml;tzlich der Befehl <b><code>read</code></b> erwartet, dessen Parameter die Anzahl der einzulesenden Zeilen angibt. So bedeutet der Befehl <b><code>read 5</code></b>, dass genau 5 Zeilen eingelesen werden sollen. Werden anschlie&szlig;end mehr oder weniger Zeilen als angegeben eingegeben, so soll "<code>INPUT MISMATCH</code>" ausgegeben werden. Die Fehlermeldung soll ebenfalls ausgegeben werden, wenn nicht alle Zeilen gleich lang sind. Die Bildzeilen sollen in eine Variable vom Typ String gespeichert werden, um in den folgenden Schritten das ASCII-Bild entschl&uuml;sseln und ausgeben zu k&ouml;nnen.
+</p>
+
+<h3>Entschl&uuml;sseln</h3>
+<p>Nach dem Einlesen der Bildzeilen kann optional der Befehl <b><code>decode</code></b> folgen, dessen Parameter (auch Schl&uuml;ssel genannt) die Permutation (Vertauschung) der Zeichen bestimmt. Um diese Permutation nun auf das gesamte Bild anzuwenden, werden immer Bl&ouml;cke (Teile) des Bildes betrachtet, die genauso lang wie der Schl&uuml;ssel sind. Jeder dieser Bl&ouml;cke wird mit dem selben Schl&uuml;ssel permutiert, sprich entschl&uuml;sselt. Das folgende Beispiel veranschaulicht die Vorgehensweise. <br /> 
+</p>
+
+<hr />
+<table cellspacing="5" cellpadding="5" width="100%">
+<tr>
+<td width="260">
+<img src="transposition1.gif" alt="Transposition, 1. Schritt" border="0" width="250" />
+</td>
+<td>
+Das Bild wird in Bl&ouml;cke zerteilt. Dabei entspricht die L&auml;nge eines Blocks der L&auml;nge des Schl&uuml;ssels. Zu diesem Zeitpunkt k&ouml;nnen Sie davon ausgehen, dass die Bildzeichenkette vollst&auml;ndig in solche Bl&ouml;cke zerlegbar ist (siehe <a href="#ueberpruefendesschluessels">&Uuml;berpr&uuml;fen des Schl&uuml;ssels</a>). Die Grafik zeigt in der ersten Zeile die verschl&uuml;sselte Zeichenkette und darunter den Schl&uuml;ssel (hier: 3102). 
+</td>
+</tr>
+<tr>
+<td width="260">
+<img src="transposition2.gif" alt="Transposition, 2. Schritt" border="0" width="250" />
+</td>
+<td>
+Das erste Zeichen des ersten Blocks wird ermittelt: Die Ziffer an der ersten Stelle im Schl&uuml;ssel bestimmt die Position, an der das gesuchte Zeichen im ersten Block der verschl&uuml;sselten Zeichenkette steht. Dies ist die Stelle mit dem Index 3 und das erste entschl&uuml;sselte Zeichen ist daher ein &lsquo;a&rsquo;. 
+</td>
+</tr>
+<tr>
+<td width="260">
+<img src="transposition3.gif" alt="Transposition, 3. Schritt" border="0" width="250" />
+</td>
+<td>
+Das zweite Zeichen im ersten Block wird analog ermittelt: Nun bestimmt die Ziffer an der zweiten Stelle im Schl&uuml;ssel die Position, an der das gesuchte Zeichen im ersten Block der verschl&uuml;sselten Zeichenkette steht. Dies ist die Stelle mit dem Index 1 und das zweite entschl&uuml;sselte Zeichen ist daher ein &lsquo;b&rsquo;.
+</td>
+</tr>
+<tr>
+<td width="260">
+<img src="transposition4.gif" alt="Transposition, 4. Schritt" border="0" width="250" />
+</td>
+<td>
+Nach demselben Prinzip werden die restlichen Zeichen im ersten Block ermittelt. Entschl&uuml;sselt lauten die ersten vier Zeichen: &lsquo;abcd&rsquo;. 
+</td>
+</tr>
+<tr>
+<td width="260">
+<img src="transposition5.gif" alt="Transposition, 5. Schritt" border="0" width="250" />
+</td>
+<td>
+Im zweiten Block wird auf dieselbe Art und Weise vorgegangen. Die Ziffer an der ersten Stelle im Schl&uuml;ssel bestimmt die Position, an der das erste Zeichen des zweiten Blocks im entsprechenden (sprich zweiten) Block der verschl&uuml;sselten Zeichenkette steht. Dies ist die Stelle mit dem Index 3 und das erste entschl&uuml;sselte Zeichen des zweiten Blocks ist daher ein &lsquo;a&rsquo;.
+</td>
+</tr>
+<tr>
+<td width="260">
+<img src="transposition6.gif" alt="Transposition, 6. Schritt" border="0" width="250" />
+</td>
+<td>
+Dasselbe Verfahren wird bis zum Ende der Zeichenkette fortgesetzt und so die Zeichenkette Block f&uuml;r Block dechiffriert.
+</td>
+</tr>
+</table>
+<hr />
+
+<a id="ueberpruefendesschluessels" name="ueberpruefendesschluessels"></a>
+<h3>&Uuml;berpr&uuml;fen des Schl&uuml;ssels</h3>
+<p>Ein g&uuml;ltiger Schl&uuml;ssel muss zwei Bedingungen erf&uuml;llen:
+</p>
+<ul>
+<li>Einerseits muss die Blockl&auml;nge und somit die Schl&uuml;ssell&auml;nge so gew&auml;hlt sein, dass das Bild exakt in solche Bl&ouml;cke geteilt werden kann. Die Bildgr&ouml;&szlig;e muss daher ein ganzzahliges Vielfaches der Blockgr&ouml;&szlig;e sein.</li>
+<li>Andererseits muss der Schl&uuml;ssel eine echte Permutation sein (es d&uuml;rfen keine Ziffern fehlen). &Uuml;berpr&uuml;fen Sie daher, ob in einem Schl&uuml;ssel der L&auml;nge <code>n</code> jede Ziffer von <code>0</code> bis <code>n-1</code> genau einmal vorkommt. Gehen Sie davon aus, dass <code>n&le;10</code> ist. </li>
+</ul>
+<p>Sinnvollerweise hat die &Uuml;berpr&uuml;fung vor der oben beschriebenen Entschl&uuml;sselung des Bildes zu erfolgen. Sollte der Schl&uuml;ssel eines der beiden Kriterien nicht erf&uuml;llen, so soll "<code>INVALID KEY</code>" ausgegeben werden und keine weitere Verarbeitung im Programm stattfinden.</p>
+
+<h3>Ausgabe</h3>
+<p>Geben Sie im letzten Schritt das entschl&uuml;sselte Bild zeilenweise aus, gefolgt von dessen Breite und H&ouml;he. Sollte kein <b><code>decode</code></b>-Befehl eingelesen werden, so soll das verschl&uuml;sselte Bild gefolgt von dessen Breite und H&ouml;he ausgegeben werden.
+</p>
+
+<p>&nbsp;</p>
+
+<!-- Ben&ouml;tigte Klassen und Methoden -->
+
+<a id="klassenundmethoden" name="klassenundmethoden"></a>
+<h2>Klassen und Methoden:</h2>
+<dl>
+<dt><b>AsciiShop</b></dt>
+<dd>Diese Klasse verarbeitet die Eingaben und gibt das entschl&uuml;sselte Bild aus.<br />
+
+    <dl>
+    <dt><code>public static void main(String[] args)</code></dt>
+    <dd>ist die einzige in dieser Runde zu implementierende Methode und f&uuml;hrt die gesamte Programmlogik entsprechend der Aufgabenstellung aus.</dd>
+    </dl>
+</dd>
+</dl>
+<p>&nbsp;</p>
+
+<!-- Spezifikationsspezifische Hinweise -->
+
+<a id="hinweise" name="hinweise"></a>
+<H2>Hinweise:</H2>
+<p>Beachten Sie die allgemeinen Hinweise zur Installation und zur Ein-/Ausgabe, sowie zur Abgabe und zur Beurteilung in den <a href="http://tosca.inflab.tuwien.ac.at/eprip/faq.do ">FAQ</a>.</p>
+
+<h3>Punktevergabe</h3>
+Ab dem Wintersemester 2010/11 werden nur noch 50% der Punkte unmittelbar nach der Abgabe beim automatisierten Testen vergeben. Die restlichen 50% der Punkte werden beim Feedback- bzw. Abgabgegespräch nach Kriterien wie Dokumentation (sprich Kommentare), Übersichtlichkeit des Codes, Verständnis, etc. vergeben. 
+
+<h3>Vorgehensweise</h3>
+<p>Sie m&uuml;ssen hier bereits einen komplexeren Algorithmus umsetzen und auch mehrere Ver&auml;nderungen und Erg&auml;nzungen an Ihrem Code vornehmen. Sie sollten dies schrittweise machen und nach jedem Schritt sicherstellen, dass Ihr Programm noch richtig funktioniert. Folgende Reihenfolge k&ouml;nnte sinnvoll sein - ausgehend von Runde 1</p>
+<ul>
+<li>Lesen Sie den <b><code>read</code></b> Befehl ein und &uuml;berpr&uuml;fen Sie, ob die Zeilenanzahl &uuml;bereinstimmt (<em>mitgelieferte Testdaten 1-2</em>)</li> 
+<li>Speichern Sie das Bild in einen String und geben Sie das Bild am Ende des Programms aus (<em>mitgelieferte Testdaten 1-2</em>)</li>
+<li>Lesen Sie den <b><code>decode</code></b> Befehl ein und &uuml;berpr&uuml;fen Sie, ob der Schl&uuml;ssel g&uuml;ltig ist (<em>mitgelieferte Testdaten 3</em>)</li>
+<li>Entschl&uuml;sseln Sie das Bild (<em>mitgelieferte Testdaten 4-5</em>)</li>
+</ul>
+
+<h3>Speicherung</h3>
+<p>Zur Speicherung der Bildzeilen soll ein String verwendet werden. Es gibt jedoch mehrere M&ouml;glichkeiten, wie diese Daten darin abgelegt werden k&ouml;nnen. In Hinblick auf die Entschl&uuml;sselung sollten alle Zeilen in einem (also ohne Zeilenumbr&uuml;che) gespeichert werden. Erst bei der Ausgabe des Bildes am Ende des Programms soll das Bild in einzelne Zeilen unterteilt werden. Diese Zeilen k&ouml;nnen dann einzeln mittels <code>System.out.println</code> ausgegeben werden. Um auf die einzelnen Zeilen des Bildes zuzugreifen, k&ouml;nnen Methoden der String-Klasse verwendet werden (z.B.: <code>substring</code>, <code>charAt</code>).</p>
+
+<h3>Schl&uuml;ssel pr&uuml;fen</h3>
+<p>Um zu &uuml;berpr&uuml;fen, ob die Schl&uuml;ssell&auml;nge <code>n</code> g&uuml;ltig ist, soll &uuml;berpr&uuml;ft werden, ob die Bildl&auml;nge (also die L&auml;nge des gespeicherten Strings) ein ganzzahliges Vielfaches der Schl&uuml;ssell&auml;nge ist. Daf&uuml;r eignet sich zum Beispiel der Modulo-Operator <code>%</code>, der den Rest bei einer ganzzahligen Division bestimmt.</p>
+
+<p>Um zu &uuml;berpr&uuml;fen, ob jede Ziffer von <code>0</code> bis <code>n-1</code> genau einmal vorkommt, gibt es mehrere Vorgehensweisen. Sie k&ouml;nnen beispielsweise f&uuml;r jede der Ziffern, die vorkommen muss, den String durchlaufen und z&auml;hlen, wie oft diese Ziffer vorkommt. Alternativ k&ouml;nnen Sie auch String Methoden wie (<code>indexOf</code>, <code>lastIndexOf</code>) verwenden.</p>
+
+<h3>Entschl&uuml;sseln</h3>
+<p>Es empfiehlt sich in einer &auml;u&szlig;eren Schleife die Bildzeichenkette blockweise und in einer inneren Schleife zeichenweise zu durchlaufen. Wenn Sie den Schl&uuml;ssel als String einlesen und mit <code>charAt</code> auf ein Zeichen zugreifen, so erhalten Sie einen char (z.B.: '<code>1</code>'). Um diesen nun in einen int umzuwandlen (<code>1</code>) k&ouml;nnen folgende Methoden hilfreich sein: <code>Character.toString(char c)</code> und <code>Integer.valueOf(String s)</code>.</p>
+
+<table cellspacing="3" cellpadding="0" style="margin-top:30px; width:100%; border: 3px solid #D3D9E3;">
+<tr>
+<td class="iopairIn" style="padding: 10px;" colspan="3">
+
+Wenn Sie Fragen zur Implementierung oder auch zu Java haben, k&ouml;nnen Sie das Informatik-Forum nutzen. F&uuml;r konkrete Fragen und Feedback zur Angabe gibt es dort auch einen eigenen Thread.
+F&uuml;r weiterf&uuml;hrende Fragen nutzen Sie bitte auch die Saalbetreuung im Informatiklabor durch Tutor/inn/en. 
+
+</td>
+</tr>
+<tr>
+<td class="iopairIn" style="text-align:center;padding:10px; width:33%;" ><a style="font-size: larger;" href="http://www.informatik-forum.at/forumdisplay.php?12-Einf%FChrung-in-das-Programmieren-VL">Informatik-Forum</a></td>
+<td class="iopairIn" style="text-align:center;padding:10px; width:33%;" ><a style="font-size: larger;" href="http://www.informatik-forum.at/showthread.php?79453-Fragen-und-Feedback-zur-Angabe">Fragen zur Angabe</a></td>
+<td class="iopairIn" style="text-align:center;padding:10px;  width:33%;"><a style="font-size: larger;" href="http://tosca.inflab.tuwien.ac.at/eprip/wiki.do?show=true&wikiPage=TutorPresence">Saalbetreuung</a></td>
+</tr>
+</table>
+
+<p>&nbsp;</p>
+<a id="eingabedaten" name="eingabedaten"></a>
+
+
+<H2>Eingabedaten:</H2>
+Ein <b><code>read</code></b> Befehl gefolgt von der Anzahl an Zeilen, die einzulesen sind, sowie den einzelnen Zeilen eines ASCII-Bildes. Es darf davon ausgegangen werden, dass das Bild keine Leerzeichen enth&auml;lt. Nach dem Einlesen des Bildes kann ein <b><code>decode</code></b> Befehl gefolgt von dem zum Entschl&uuml;sseln ben&ouml;tigten Schl&uuml;ssel eingegeben werden. Sie d&uuml;rfen davon ausgehen, dass der Schl&uuml;ssel maximal 10 Zeichen lang ist.
+
+<a id="ausgabedaten" name="ausgabedaten"></a>
+
+
+<H2>Ausgabedaten:</H2>
+Das korrekt formatierte (und entschl&uuml;sselte) ASCII-Bild sowie dessen H&ouml;he und Breite.
+
+<a id="fehlerbehandlung" name="fehlerbehandlung"></a>
+
+
+<H2>Fehlerbehandlung:</H2>
+Geben Sie "<code>INPUT MISMATCH</code>" aus und brechen Sie die weitere Verarbeitung ab, falls einer der folgenden Fehler auftritt:
+<ul>
+<li>Der erste Befehl ist nicht <b><code>read</code></b> gefolgt von einer Zahl</li>
+<li>Es gibt mehr oder weniger Zeilen als bei <b><code>read</code></b> spezifiziert</li>
+<li>Eine der Bildzeilen hat mehr oder weniger Zeichen als die anderen Bildzeilen</li>
+</ul>
+<p>Geben Sie "<code>INVALID KEY</code>" aus, falls ein Fehler beim &Uuml;berpr&uuml;fen des Schl&uuml;ssels auftritt:</p>
+<ul>
+<li>Es wurde kein Schl&uuml;ssel als Parameter von <b><code>decode</code></b> angegeben.</li>
+<li>Die L&auml;nge des Bildes ist kein ganzzahliges Vielfaches der Schl&uuml;ssell&auml;nge</li>
+<li>Der Schl&uuml;ssel der L&auml;nge <code>n</code> enth&auml;lt nicht alle Ziffern von <code>0</code> bis <code>n-1</code> genau einmal</li>
+</ul>
+
+<a id="testen" name="testen"></a>
+
+
+<H2>Testen:</H2>
+
+<table cellspacing="1" cellpadding="5" width="100%">
+
+<tr>
+<td><hr/>
+<table cellspacing="5" cellpadding="5" width="100%">
+<tr>
+<td class="iopairIn" width="100"><b>In</b></td>
+<td class="iopairIn"><pre><font class="iopair">read 27
+============,.V+.;============
+===========;.X##..;===========
+===========..####..===========
+==========,.##M###.:==========
+=========;.R##WW##=.;=========
+=========..##MWMW##,.=========
+========:.I##WWMWW#W.,========
+=======;.:##WWWWWW##I.;=======
+=======:.W########M##..=======
+=======.:############V.;======
+=======.####...,.,M###,.======
+======,.###:..+++;,B..#.;=====
+=====;.#;.#i+YXVVY:#V.#..:====
+====:..#..##.RYYIt##...#=.,===
+==;..+#;...#######W....##W..:=
+:..t###......iVV=....,.+#iM#..
+.B#i,#..,,..........,,..#,..#I
+V#...#..,,,,,.,,,,:,,,..R#..V#
+;#+.i#..,,,,,,,,,.,,,,,.iX.X#,
+.i#=MV..,,,,.,,,,,,.,,,..###..
+,.t##..,,,,,,,,,,,,,,:,..V##.;
+..M#M..,,,,.,.,,,,,,,:,,.=##..
+i###M..,...........,,:,,..###.
+.####........=II;.....,,.;##R.
+,...#....X####MW###B.....Wi..:
+==;,##,###;........##i...#;,==
+===,.IVi..,;======:..B#B#t.;==
+</font></pre></td>
+</tr>
+<tr>
+<td class="iopairOut"><b>Out</b></td>
+<td class="iopairOut"><pre><font class="iopair">============,.V+.;============
+===========;.X##..;===========
+===========..####..===========
+==========,.##M###.:==========
+=========;.R##WW##=.;=========
+=========..##MWMW##,.=========
+========:.I##WWMWW#W.,========
+=======;.:##WWWWWW##I.;=======
+=======:.W########M##..=======
+=======.:############V.;======
+=======.####...,.,M###,.======
+======,.###:..+++;,B..#.;=====
+=====;.#;.#i+YXVVY:#V.#..:====
+====:..#..##.RYYIt##...#=.,===
+==;..+#;...#######W....##W..:=
+:..t###......iVV=....,.+#iM#..
+.B#i,#..,,..........,,..#,..#I
+V#...#..,,,,,.,,,,:,,,..R#..V#
+;#+.i#..,,,,,,,,,.,,,,,.iX.X#,
+.i#=MV..,,,,.,,,,,,.,,,..###..
+,.t##..,,,,,,,,,,,,,,:,..V##.;
+..M#M..,,,,.,.,,,,,,,:,,.=##..
+i###M..,...........,,:,,..###.
+.####........=II;.....,,.;##R.
+,...#....X####MW###B.....Wi..:
+==;,##,###;........##i...#;,==
+===,.IVi..,;======:..B#B#t.;==
+30 27
+</font></pre></td>
+</tr>
+<tr>
+<td><b>Beschreibung</b></td>
+<td>Ein gültiges ASCII-Bild der Größe 30x27 ohne decode-Befehl</td>
+</tr>
+</table>
+<hr/></td>
+</tr>
+
+<tr>
+<td><hr/>
+<table cellspacing="5" cellpadding="5" width="100%">
+<tr>
+<td class="iopairIn" width="100"><b>In</b></td>
+<td class="iopairIn"><pre><font class="iopair">read 27
+============,.V+.;============
+===========;.X##..;===========
+===========..####..===========
+==========,.##M###.:==========
+=========;.R##WW##=.;=========
+=========..##MWMW##,.=========
+========:.I##WWMWW#W.,========
+=======;.:##WWWWWW##I.;=======
+=======:.W########M##..=======
+=======.:############V.;======
+=======.####...,.,M###,.======
+======,.###:..+++;,B..#.;=====
+=====;.#;.#i+YXVVY:#V.#..:====
+====:..#..##.RYYIt##...#=.,===
+==;..+#;...#######W....##W..:=
+:..t###......iVV=....,.+#iM#..
+.B#i,#..,,..........,,..#,..#I
+V#...#..,,,,,.,,,,:,,,..R#..V#
+;#+.i#..,,,,,,,,,.,,,,,.iX.X#,
+.i#=MV..,,,,.,,,,,,.,,,..###..
+,.t##..,,,,,,,,,,,,,,:,..V##.;
+..M#M..,,,,.,.,,,,,,,:,,.=##..
+i###M..,...........,,:,,..###.
+.####........=II;.....,,.;##R.
+,...#....X####MW###B.....Wi..:
+==;,##,###;........##i...#;,==
+</font></pre></td>
+</tr>
+<tr>
+<td class="iopairOut"><b>Out</b></td>
+<td class="iopairOut"><pre><font class="iopair">INPUT MISMATCH
+</font></pre></td>
+</tr>
+<tr>
+<td><b>Beschreibung</b></td>
+<td>Es fehlt eine Bild-Zeile</td>
+</tr>
+</table>
+<hr/></td>
+</tr>
+
+<tr>
+<td><hr/>
+<table cellspacing="5" cellpadding="5" width="100%">
+<tr>
+<td class="iopairIn" width="100"><b>In</b></td>
+<td class="iopairIn"><pre><font class="iopair">read 20
+.........................................
+.....!\_________________________/!\......
+.....!!.........................!!.\.....
+.....!!.........................!!..\....
+.....!!.........................!!..!....
+.....!!..........EPROG..........!!..!....
+.....!!.........................!!..!....
+.....!!.........................!!..!....
+.....!!.........................!!..!....
+.....!!.........................!!../....
+.....!!_________________________!!./.....
+.....!/_________________________\!/......
+........__\_________________/__/!_.......
+.......!_______________________!/.)......
+.....________________________....(__.....
+..../oooo..oooo..oooo..oooo./!..._..)_...
+.../ooooooooooooooooooooooo/./..(_)_(_)..
+../ooooooooooooooooooooooo/./....(o.o)...
+./C=_____________________/_/....==\o/==..
+.........................................
+decode 03123
+</font></pre></td>
+</tr>
+<tr>
+<td class="iopairOut"><b>Out</b></td>
+<td class="iopairOut"><pre><font class="iopair">INVALID KEY
+</font></pre></td>
+</tr>
+<tr>
+<td><b>Beschreibung</b></td>
+<td>Der Schlüssel der Länge 5 enthält zweimal die Ziffer 3, dafür nie die Ziffer 4</td>
+</tr>
+</table>
+<hr/></td>
+</tr>
+
+<tr>
+<td><hr/>
+<table cellspacing="5" cellpadding="5" width="100%">
+<tr>
+<td class="iopairIn" width="100"><b>In</b></td>
+<td class="iopairIn"><pre><font class="iopair">read 2
+cbdaaf
+seii*c
+decode 3102
+</font></pre></td>
+</tr>
+<tr>
+<td class="iopairOut"><b>Out</b></td>
+<td class="iopairOut"><pre><font class="iopair">abcdef
+ascii*
+6 2
+</font></pre></td>
+</tr>
+<tr>
+<td><b>Beschreibung</b></td>
+<td>Das Ascii-Bild der Größe 6x2 wurde erfolgreich entschlüsselt</td>
+</tr>
+</table>
+<hr/></td>
+</tr>
+
+<tr>
+<td><hr/>
+<table cellspacing="5" cellpadding="5" width="100%">
+<tr>
+<td class="iopairIn" width="100"><b>In</b></td>
+<td class="iopairIn"><pre><font class="iopair">read 20
+.........................................
+._.._..\!____________________\/.!_.__....
+...!..!.....................!..!....\...!
+..!........................!.\......!..!.
+.............!....................!!.....
+..!........!!..OP.RE....G.....!..!.......
+!.......!.!...............!..!........!..
+....!..!.................!........!.....!
+...!.!.............................!..!!.
+.!..!........................../...!.!...
+!._.._.._!____________________/!..!.__...
+._.._../!____________________/\.!_.__....
+........____\________________/.!_._/.....
+......._______!____________/_.!_.__)..._.
+......____________________.._.____(.../..
+......oo.oooooooooooo...../.!._oo..../._.
+)...oooooooooooooooooooo//_.o(oo..._/)(._
+)..oooooooooooooooooooo//..o.oo...o/)..o(
+..______=C____________//.__.__..=o./\.==.
+=........................................
+decode 7641309852
+</font></pre></td>
+</tr>
+<tr>
+<td class="iopairOut"><b>Out</b></td>
+<td class="iopairOut"><pre><font class="iopair">.........................................
+.....!\_________________________/!\......
+.....!!.........................!!.\.....
+.....!!.........................!!..\....
+.....!!.........................!!..!....
+.....!!..........EPROG..........!!..!....
+.....!!.........................!!..!....
+.....!!.........................!!..!....
+.....!!.........................!!..!....
+.....!!.........................!!../....
+.....!!_________________________!!./.....
+.....!/_________________________\!/......
+........__\_________________/__/!_.......
+.......!_______________________!/.)......
+.....________________________....(__.....
+..../oooo..oooo..oooo..oooo./!..._..)_...
+.../ooooooooooooooooooooooo/./..(_)_(_)..
+../ooooooooooooooooooooooo/./....(o.o)...
+./C=_____________________/_/....==\o/==..
+.........................................
+41 20
+</font></pre></td>
+</tr>
+<tr>
+<td><b>Beschreibung</b></td>
+<td>Das Ascii-Bild der Größe 41x20 wurde erfolgreich entschlüsselt</td>
+</tr>
+</table>
+<hr/></td>
+</tr>
+
+</table>
+
+<br/>
+<b>Bemerkung:</b> Diese Beispiele dienen nur zur Verdeutlichung der Spezifikation und
+m&uuml;ssen nicht korrekt formatiert sein. Die korrekte Formatierung entnehmen Sie
+bitte dem mitgelieferten Outputfile. Zum Testen Ihrer L&ouml;sung
+k&ouml;nnen Sie aus den mitgelieferten Eingabedaten wie folgt eine Ausgabedatei
+erzeugen:
+
+<br/>
+<b><tt>java  AsciiShop &lt; asciishop-A02.i1 &gt; asciishop-A02.out1</tt></b>
+<p/>
+Das erzeugte File asciishop-A02.out1 k&ouml;nnen Sie dann mit
+dem mitgelieferten Outputfile asciishop-A02.o1 vergleichen.
+
+
+</body>
+</html>
