@@ -1,15 +1,17 @@
 JAVAC = javac
 JAR = jar
+SOURCES = AsciiShop.java AsciiImage.java
+CLASSES = $(SOURCES:.java=.class)
 MODNAME = AsciiShop
 
-all: $(MODNAME).class
+all: $(CLASSES)
 
-$(MODNAME).class: $(MODNAME).java
-	$(JAVAC) $(MODNAME).java
+%.class: %.java
+	$(JAVAC) $<
 
-package: $(MODNAME).java
-	$(JAR) Mcvf $(MODNAME).jar $(MODNAME).java
+package: $(SOURCES)
+	$(JAR) -Mcvf $(MODNAME).jar $(SOURCES)
 
 clean:
-	rm -f $(MODNAME).class
+	rm -f $(CLASSES)
 	rm -f $(MODNAME).jar
