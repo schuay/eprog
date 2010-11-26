@@ -1,6 +1,7 @@
 JAVAC = javac
 JAR = jar
-SOURCES = AsciiShop.java AsciiImage.java
+SOURCES = AsciiException.java AsciiImage.java AsciiShop.java \
+		  AsciiCoord.java AsciiConstants.java
 CLASSES = $(SOURCES:.java=.class)
 MODNAME = AsciiShop
 
