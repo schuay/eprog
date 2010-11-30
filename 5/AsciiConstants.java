@@ -1,15 +1,20 @@
 public class AsciiConstants {
-	public static final String
-		cmdCreate = "create",
-		cmdClear = "clear",
-		cmdLine = "line",
-		cmdLoad = "load",
-		cmdPrint = "print",
-		cmdReplace = "replace",
-        cmdUnique = "uniqueChars",
+    public static final String
+        cmdCentroid = "centroid",
+        cmdClear = "clear",
+        cmdCreate = "create",
         cmdFlip = "flip-v",
-        cmdTranspose = "transpose",
+        cmdGrow = "grow",
+        cmdLine = "line",
+        cmdLoad = "load",
+        cmdPrint = "print",
+        cmdReplace = "replace",
+        cmdStraighten = "straighten",
         cmdSymmetric = "symmetric-h",
+        cmdTranspose = "transpose",
+        cmdUndo = "undo",
+        cmdUnique = "uniqueChars",
         errCmd = "UNKNOWN COMMAND",
-        errInp = "INPUT MISMATCH";
+        errInp = "INPUT MISMATCH",
+        errStackEmpty = "STACK EMPTY";
 }
