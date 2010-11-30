@@ -101,7 +101,7 @@ class AsciiShop {
                 throw new AsciiException(AsciiConstants.errInp);
             }
             AsciiPoint p = img.getCentroid(tokens[1].charAt(0));
-            System.out.println(p.toString());
+            System.out.println(p);
         } else if (cmd.equals(AsciiConstants.cmdFlip)) {
             if (tokens.length != 1) {
                 throw new AsciiException(AsciiConstants.errInp);
@@ -133,7 +133,7 @@ class AsciiShop {
             }
             AsciiImage newImg = stack.pop();
             if (newImg == null) {
-                throw new AsciiException(AsciiConstants.errStackEmpty);
+                System.out.println(AsciiConstants.errStackEmpty);
             } else {
                 img = newImg;
                 System.out.printf("STACK USAGE %d/%d%n", stack.size(), stack.capacity());

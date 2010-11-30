@@ -203,6 +203,9 @@ public class AsciiImage {
         /* sum up coords */
         int sumX = 0, sumY = 0;
         ArrayList<AsciiPoint> l = getPointList(c);
+        if (l.size() == 0) {
+            return null;
+        }
         for (AsciiPoint p : l) {
             sumX += p.getX();
             sumY += p.getY();
