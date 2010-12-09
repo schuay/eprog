@@ -1,5 +1,5 @@
 public class AsciiPoint {
-    private int xcoord, ycoord;
+    private final int xcoord, ycoord;
 
     public AsciiPoint(int x, int y) {
         xcoord = x;
@@ -11,10 +11,8 @@ public class AsciiPoint {
     public int getY() {
         return ycoord;
     }
-    public void swap() {
-        int temp = xcoord;
-        xcoord = ycoord;
-        ycoord = temp;
+    public AsciiPoint swap() {
+        return new AsciiPoint(ycoord, xcoord);
     }
     public AsciiPoint getDistance(AsciiPoint rhs) {
         /* return difference of 2 points */

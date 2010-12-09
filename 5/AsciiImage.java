@@ -135,8 +135,8 @@ public class AsciiImage {
 
         /* special cases */
         if (Math.abs(dist.getY()) > Math.abs(dist.getX())) {
-            pointA.swap();
-            pointB.swap();
+            pointA = pointA.swap();
+            pointB = pointB.swap();
             inverted = true;
         }
         if (pointB.getX() < pointA.getX()) {
