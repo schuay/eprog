@@ -21,6 +21,7 @@ public class LoadOperation implements Operation {
         if (!hasValidDimensions(result))
             throw new OperationException();
 
+        /* loop through input and set pixels one by one */
         int y = 0;
         for (String line : lines) {
             for (int x = 0; x < line.length(); x++) {
@@ -34,6 +35,7 @@ public class LoadOperation implements Operation {
 	}
 
     private boolean hasValidDimensions(AsciiImage img) {
+        /* check if data matches img dimensions */
         int width = img.getWidth();
         if (lines.length != img.getHeight())
             return false;
@@ -44,6 +46,7 @@ public class LoadOperation implements Operation {
     }
 
     private boolean containsInvalidChars(String data, String charset) {
+        /* remove all valid chars and see if anything remains */
         String tmp = new String(data);
         for (int i = 0; i < charset.length(); i++)
             tmp = tmp.replace(charset.substring(i, i+1), "");

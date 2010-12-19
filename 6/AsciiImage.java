@@ -27,6 +27,8 @@ public class AsciiImage {
                 setPixel(x, y, cclear);
     }
     private boolean containsDuplicateChars(String str) {
+        /* continually remove all occurrences of first char and check if
+         * more than one char was removed. yes == duplicate chars */
         String tmp = new String(str);
         int len = tmp.length();
         int newlen;

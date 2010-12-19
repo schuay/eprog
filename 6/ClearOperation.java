@@ -11,6 +11,7 @@ public class ClearOperation implements Operation {
 
 		AsciiImage result = new AsciiImage(img);
 
+        /* reset all pixels to default value */
         for (int x = 0; x < result.getWidth(); x++)
             for (int y = 0; y < result.getHeight(); y++)
                 result.setPixel(x, y, clearChar);

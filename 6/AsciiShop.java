@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Stack;
 import java.util.EmptyStackException;
 
+import java.util.HashMap;
+
 class AsciiShop {
     private static Scanner scanner;
     private static AsciiImage img = null;
@@ -44,12 +46,15 @@ class AsciiShop {
             scanner.close();
         }
     }
-    private static void handleCmd(String[] tokens) throws AsciiException, OperationException {
+
+    private static void handleCmd(String[] tokens)
+                                  throws AsciiException, OperationException {
         /* empty input, error */
         if (tokens.length == 0) {
             throw new AsciiException(AsciiConstants.errInp);
         }
 
+        /* save reference to old image to add to undo stack */
         AsciiImage oldImg = new AsciiImage(img);
         Operation op;
 
