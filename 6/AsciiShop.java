@@ -5,6 +5,7 @@ import java.io.InputStream;
 
 import java.util.ArrayList;
 import java.util.Stack;
+import java.util.EmptyStackException;
 
 class AsciiShop {
     private static Scanner scanner;
@@ -100,11 +101,10 @@ class AsciiShop {
             if (tokens.length != 1) {
                 throw new AsciiException(AsciiConstants.errInp);
             }
-            AsciiImage newImg = stack.pop();
-            if (newImg == null) {
+            try {
+                img = stack.pop();
+            } catch (EmptyStackException ex) {
                 System.out.println(AsciiConstants.errStackEmpty);
-            } else {
-                img = newImg;
             }
         } else {
             throw new AsciiException(AsciiConstants.errCmd);

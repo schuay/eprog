@@ -40,7 +40,7 @@ public class ReplaceOperation implements Operation {
 	public AsciiImage execute(AsciiImage img) throws OperationException {
 
 		if (img.getCharset().indexOf(newChar) < 0) {
-			throw new OperationException("Invalid char");
+			throw new OperationException();
 		}
 
 		AsciiImage result = new AsciiImage(img);

@@ -1,6 +1,6 @@
 public class OperationException extends Exception {
     public OperationException() {
-        super();
+        super("OPERATION FAILED");
     }
     public OperationException(String msg) {
         super(msg);

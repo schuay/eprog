@@ -11,7 +11,7 @@ public class MedianOperation implements Operation {
 
         for (int x = 0; x < result.getWidth(); x++)
             for (int y = 0; y < result.getHeight(); y++)
-                result.setPixel(x, y, getMedian(result, x, y));
+                result.setPixel(x, y, getMedian(img, x, y));
 
 		return result;
 
