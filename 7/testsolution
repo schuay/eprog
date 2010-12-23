@@ -1,0 +1,8 @@
+#!/bin/bash
+for file in angabe/*.i*; do 
+    echo ${file}
+    compfile=$(echo ${file} | sed 's/i\([0-9]\+\)/o\1/')
+    java AsciiShop ${file} | diff -ub - ${compfile}
+done
+unset file
+unset compfile
