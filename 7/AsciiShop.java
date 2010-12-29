@@ -71,6 +71,7 @@ class AsciiShop {
         if (cmds.containsKey(cmd)) {
             op = cmds.get(cmd).create(scanner);
             img = op.execute(img);
+            stack.push(oldImg);
         /* special cases for print and undo */
         } else if (cmd.equals(AsciiConstants.cmdPrint)) {
             if (scanner.hasNext()) {
@@ -78,6 +79,7 @@ class AsciiShop {
             }
             System.out.print(img.toString());
             System.out.println();
+            scanner.nextLine();
         } else if (cmd.equals(AsciiConstants.cmdUndo)) {
             if (scanner.hasNext()) {
                 throw new AsciiException(AsciiConstants.errInp);
@@ -87,15 +89,11 @@ class AsciiShop {
             } catch (EmptyStackException ex) {
                 System.out.println(AsciiConstants.errStackEmpty);
             }
+            scanner.nextLine();
         /* unknown cmd */
         } else {
             throw new AsciiException(AsciiConstants.errCmd);
         }
-
-        /* only keep history for destructive cmds */
-        if (!cmd.equals(AsciiConstants.cmdUndo) &&
-            !cmd.equals(AsciiConstants.cmdPrint))
-            stack.push(oldImg);
     }
 
     private static int parseInt(String s) throws AsciiException {

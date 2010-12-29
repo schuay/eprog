@@ -32,11 +32,11 @@ public class ReplaceFactory implements Factory {
 
 		for (int i = 0; i < params.length; i++) {
 			if (!scanner.hasNext()) {
-				throw new FactoryException("Insufficient parameter");
+				throw new FactoryException();
 			}
 			String s = scanner.next();
 			if (s.length() > 1) {
-				throw new FactoryException("Insufficient parameter");
+				throw new FactoryException();
 			}
 			params[i] = s.charAt(0);
 		}

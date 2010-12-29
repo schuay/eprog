@@ -2,22 +2,37 @@ import java.util.ArrayList;
 
 public class BinaryOperation implements Operation {
 
-	public BinaryOperation() { }
+    char threshold, brightest, darkest;
+    int thresholdIndex;
+    String charset;
+
+	public BinaryOperation(char threshold) {
+        this.threshold = threshold;
+    }
 
 	public AsciiImage execute(AsciiImage img) throws OperationException {
 
-        String charset = img.getCharset();
-        char clearChar = charset.charAt(charset.length() - 1);
+        charset = img.getCharset();
+        thresholdIndex = charset.indexOf(threshold);
+        if (thresholdIndex == -1)
+            throw new OperationException();
 
-		AsciiImage result = new AsciiImage(img);
+        darkest = charset.charAt(0);
+        brightest = charset.charAt(charset.length() - 1);
 
-        /* reset all pixels to default value */
-        for (int x = 0; x < result.getWidth(); x++)
-            for (int y = 0; y < result.getHeight(); y++)
-                result.setPixel(x, y, clearChar);
+        AsciiImage result = new AsciiImage(img);
+        for (int x = 0; x < img.getWidth(); x++)
+            for (int y = 0; y < img.getHeight(); y++)
+                result.setPixel(x, y, toBinary(result.getPixel(x, y)));
 
 		return result;
 
 	}
+
+    private char toBinary(char from) {
+        if (charset.indexOf(from) < thresholdIndex)
+            return darkest;
+        else return brightest;
+    }
 
 }

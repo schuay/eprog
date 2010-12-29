@@ -5,7 +5,6 @@ public class LoadFactory implements Factory {
 	public Operation create(Scanner scanner) throws FactoryException {
 
         String[] args = scanner.nextLine().trim().split(" ");
-
         if (args.length != 1) {
             throw new FactoryException("Insufficient parameter");
         }
