@@ -1,5 +1,6 @@
 public class AsciiConstants {
     public static final String
+        cmdBinary = "binary",
         cmdClear = "clear",
         cmdCreate = "create",
         cmdLoad = "load",

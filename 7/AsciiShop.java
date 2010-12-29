@@ -52,11 +52,11 @@ class AsciiShop {
     private static void initCommands() {
         cmds = new HashMap<String, Factory>();
 
-        cmds.put(cmdClear, new ClearFactory());
-        cmds.put(cmdBinary, new BinaryFactory());
-        cmds.put(cmdFilter, new FilterFactory());
-        cmds.put(cmdLoad, new LoadFactory());
-        cmds.put(cmdReplace, new ReplaceFactory());
+        cmds.put(AsciiConstants.cmdClear, new ClearFactory());
+        cmds.put(AsciiConstants.cmdBinary, new BinaryFactory());
+        cmds.put(AsciiConstants.cmdFilter, new FilterFactory());
+        cmds.put(AsciiConstants.cmdLoad, new LoadFactory());
+        cmds.put(AsciiConstants.cmdReplace, new ReplaceFactory());
     }
 
     private static void handleCmd(Scanner scanner)
@@ -70,16 +70,16 @@ class AsciiShop {
         /* standard commands handled by factory */
         if (cmds.containsKey(cmd)) {
             op = cmds.get(cmd).create(scanner);
-            op.execute(img);
+            img = op.execute(img);
         /* special cases for print and undo */
         } else if (cmd.equals(AsciiConstants.cmdPrint)) {
-            if (tokens.length != 1) {
+            if (scanner.hasNext()) {
                 throw new AsciiException(AsciiConstants.errInp);
             }
             System.out.print(img.toString());
             System.out.println();
         } else if (cmd.equals(AsciiConstants.cmdUndo)) {
-            if (tokens.length != 1) {
+            if (scanner.hasNext()) {
                 throw new AsciiException(AsciiConstants.errInp);
             }
             try {
