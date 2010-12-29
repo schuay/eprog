@@ -7,7 +7,7 @@ SOURCES = AsciiException.java AsciiImage.java AsciiShop.java \
 		  MedianOperation.java FactoryException.java \
 		  ClearFactory.java LoadFactory.java Factory.java \
 		  FilterFactory.java ReplaceFactory.java BinaryOperation.java \
-		  BinaryFactory.java
+		  BinaryFactory.java Histogram.java
 CLASSES = $(SOURCES:.java=.class)
 MODNAME = AsciiShop
 
