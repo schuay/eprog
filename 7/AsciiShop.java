@@ -80,6 +80,12 @@ class AsciiShop {
             System.out.print(img.toString());
             System.out.println();
             scanner.nextLine();
+        } else if (cmd.equals(AsciiConstants.cmdHistogram)) {
+            if (scanner.hasNext()) {
+                throw new AsciiException(AsciiConstants.errInp);
+            }
+            System.out.print(Histogram.getHistogram(img).toString());
+            scanner.nextLine();
         } else if (cmd.equals(AsciiConstants.cmdUndo)) {
             if (scanner.hasNext()) {
                 throw new AsciiException(AsciiConstants.errInp);
