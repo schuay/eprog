@@ -85,6 +85,7 @@ class AsciiShop {
                 throw new AsciiException(AsciiConstants.errInp);
             }
             System.out.print(Histogram.getHistogram(img).toString());
+            System.out.println();
             scanner.nextLine();
         } else if (cmd.equals(AsciiConstants.cmdUndo)) {
             if (scanner.hasNext()) {
