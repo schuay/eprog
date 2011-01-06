@@ -4,14 +4,12 @@ public class FilterFactory implements Factory {
 
 	public Operation create(Scanner scanner) throws FactoryException {
 
-        String type;
-        if (!scanner.hasNext()) {
+        String[] args = scanner.nextLine().trim().split(" ");
+        if (args.length != 1) {
             throw new FactoryException("Insufficient parameter");
-        } else {
-            type = scanner.next();
         }
 
-        if (!type.equals("median")) {
+        if (!args[0].equals("median")) {
             throw new FactoryException(AsciiConstants.errInp);
         }
 

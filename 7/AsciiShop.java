@@ -37,7 +37,7 @@ class AsciiShop {
                 throw new AsciiException(AsciiConstants.errInp);
             }
             /* main loop, all logic goes in here */
-            while (scanner.hasNextLine()) {
+            while (scanner.hasNext()) {
                 handleCmd(scanner);
             }
         } catch (Exception e) {
@@ -74,23 +74,14 @@ class AsciiShop {
             stack.push(oldImg);
         /* special cases for print and undo */
         } else if (cmd.equals(AsciiConstants.cmdPrint)) {
-            if (scanner.hasNext()) {
-                throw new AsciiException(AsciiConstants.errInp);
-            }
             System.out.print(img.toString());
             System.out.println();
             scanner.nextLine();
         } else if (cmd.equals(AsciiConstants.cmdHistogram)) {
-            if (scanner.hasNext()) {
-                throw new AsciiException(AsciiConstants.errInp);
-            }
             System.out.print(Histogram.getHistogram(img).toString());
             System.out.println();
             scanner.nextLine();
         } else if (cmd.equals(AsciiConstants.cmdUndo)) {
-            if (scanner.hasNext()) {
-                throw new AsciiException(AsciiConstants.errInp);
-            }
             try {
                 img = stack.pop();
             } catch (EmptyStackException ex) {
