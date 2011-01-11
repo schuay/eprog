@@ -91,7 +91,7 @@ public class AsciiImage {
         return getPixel(p.getX(), p.getY());
     }
     public char getPixel(int x, int y) {
-        if (x < 0 || x >= w || y < 0 || y >= h)
+        if (!isInBounds(x, y))
             throw new IndexOutOfBoundsException();
         return data[x][y];
     }
@@ -99,7 +99,7 @@ public class AsciiImage {
         setPixel(p.getX(), p.getY(), c);
     }
     public void setPixel(int x, int y, char c) {
-        if (x < 0 || x >= w || y < 0 || y >= h || chset.indexOf(c) == -1)
+        if (!isInBounds(x, y) || chset.indexOf(c) == -1)
             throw new IndexOutOfBoundsException();
         data[x][y] = c;
     }
@@ -118,13 +118,34 @@ public class AsciiImage {
         int curx, cury;
         for (int dx = -1; dx < 2; dx++) {
             curx = x + dx;
-            if (curx < 0 || curx >= w) continue;
             for (int dy = -1; dy < 2; dy++) {
                 cury = y + dy;
-                if (cury < 0 || cury >= h) continue;
+                if (!isInBounds(curx, cury)) continue;
                 list.add(new AsciiPoint(curx, cury));
             }
         }
         return list;
+    }
+    public ArrayList<AsciiPoint> getFourNeighborList(int x, int y) {
+        /* returns all perpendicular neighbors around (x,y) *excluding* (x,y) */
+        ArrayList<AsciiPoint> list = new ArrayList<AsciiPoint>();
+        int curx, cury;
+        for (int dx = -1; dx < 2; dx++) {
+            curx = x + dx;
+            for (int dy = -1; dy < 2; dy++) {
+                if (Math.abs(dx + dy) != 1) continue;
+                cury = y + dy;
+                if (!isInBounds(curx, cury)) continue;
+                list.add(new AsciiPoint(curx, cury));
+            }
+        }
+        return list;
+    }
+    public boolean isInBounds(int x, int y) {
+
+        if (y < 0 || y >= h) return false;
+        if (x < 0 || x >= w) return false;
+        return true;
+
     }
 }

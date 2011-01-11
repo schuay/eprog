@@ -40,8 +40,18 @@ class AsciiShop {
             while (scanner.hasNext()) {
                 handleCmd(scanner);
             }
+        } catch (AsciiException e) {
+            /* on error, print message */
+            System.out.println(e.getMessage());
+        } catch (FactoryException e) {
+            /* on error, print message */
+            System.out.println(e.getMessage());
+        } catch (OperationException e) {
+            /* on error, print message */
+            System.out.println(e.getMessage());
         } catch (Exception e) {
             /* on error, print message */
+            System.out.println(e.toString());
             System.out.println(e.getMessage());
         } finally {
             /* close used resources */
@@ -55,6 +65,7 @@ class AsciiShop {
         cmds.put(AsciiConstants.cmdClear, new ClearFactory());
         cmds.put(AsciiConstants.cmdBinary, new BinaryFactory());
         cmds.put(AsciiConstants.cmdFilter, new FilterFactory());
+        cmds.put(AsciiConstants.cmdFloodfill, new FloodfillFactory());
         cmds.put(AsciiConstants.cmdLoad, new LoadFactory());
         cmds.put(AsciiConstants.cmdReplace, new ReplaceFactory());
     }
