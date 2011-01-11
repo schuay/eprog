@@ -9,11 +9,13 @@ public class FilterFactory implements Factory {
             throw new FactoryException("Insufficient parameter");
         }
 
-        if (!args[0].equals("median")) {
+        if (args[0].equals("median")) {
+            return new MedianOperation();
+        } else if (args[0].equals("average")) {
+            return new AverageOperation();
+        } else {
             throw new FactoryException(AsciiConstants.errInp);
         }
-
-        return new MedianOperation();
 
 	}
 
