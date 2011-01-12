@@ -105,7 +105,7 @@ class AsciiShop {
         }
     }
 
-    private static int parseInt(String s) throws AsciiException {
+    public static int parseInt(String s) throws AsciiException {
         /* safe int parsing */
         try {
             return Integer.parseInt(s.trim());

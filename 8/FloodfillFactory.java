@@ -15,18 +15,14 @@ public class FloodfillFactory implements Factory {
             throw new FactoryException(AsciiConstants.errInp);
         }
 
-        return new FloodfillOperation(parseInt(args[0]), parseInt(args[1]),
-                    args[2].charAt(0));
-
-    }
-
-    private static int parseInt(String s) throws FactoryException {
-        /* safe int parsing */
         try {
-            return Integer.parseInt(s.trim());
-        } catch (NumberFormatException e) {
-            throw new FactoryException(AsciiConstants.errInp);
+            return new FloodfillOperation(AsciiShop.parseInt(args[0]), 
+                        AsciiShop.parseInt(args[1]),
+                        args[2].charAt(0));
+        } catch (AsciiException e) {
+            throw new FactoryException();
         }
+
     }
 
 }
