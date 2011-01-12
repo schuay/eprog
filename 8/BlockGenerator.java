@@ -3,7 +3,6 @@ public abstract class BlockGenerator {
     protected final int radius;
     protected int[] block;
     protected String charset;
-    protected final int notinit = -1;
 
     public BlockGenerator(int radius) {
 
@@ -14,12 +13,10 @@ public abstract class BlockGenerator {
 
     protected void initBlock(AsciiImage img, int x, int y) {
 
-        /* init to special value -1 */
-        for (int i = 0; i < radius * radius; i++)
-            block[i] = notinit;
+        /* save charset */
+        charset = img.getCharset();
 
         /* and write region from img */
-        charset = img.getCharset();
         int curx, cury;
         final int lowerbound = radius / 2 * -1;
         final int upperbound = Math.abs(lowerbound); /* also central coord of block */
@@ -27,9 +24,15 @@ public abstract class BlockGenerator {
             curx = x + dx;
             for (int dy = lowerbound; dy <= upperbound; dy++) {
                 cury = y + dy;
-                if (!img.isInBounds(curx, cury)) continue;
-                block[_(upperbound + dx, upperbound + dy)] = 
-                    charset.indexOf(img.getPixel(curx, cury));
+                /* edge case, use special handling */
+                if (!img.isInBounds(curx, cury)) {
+                    block[_(upperbound + dx, upperbound + dy)] = 
+                        charset.indexOf(getEdgeChar(img, x, y, dx, dy));
+                /* default case */
+                } else {
+                    block[_(upperbound + dx, upperbound + dy)] = 
+                        charset.indexOf(img.getPixel(curx, cury));
+                }
             }
         }
         
@@ -39,7 +42,12 @@ public abstract class BlockGenerator {
     protected int _(int x, int y) {
         return y * radius + x;
     }
+    protected int mod(int dividend, int divisor) {
+        /* get some usable results from #*$^%#$ java module */
+        return (dividend % divisor + divisor) % divisor;
+    }
 
     public abstract int[] getBlock(AsciiImage img, int x, int y);
+    protected abstract char getEdgeChar(AsciiImage img, int x, int y, int dx, int dy);
 
 }
