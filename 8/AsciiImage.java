@@ -112,20 +112,6 @@ public class AsciiImage {
                     list.add(new AsciiPoint(x, y));
         return list;
     }
-    public ArrayList<AsciiPoint> getNeighborList(int x, int y) {
-        /* returns all neighbors around (x,y) *including* (x,y) */
-        ArrayList<AsciiPoint> list = new ArrayList<AsciiPoint>();
-        int curx, cury;
-        for (int dx = -1; dx < 2; dx++) {
-            curx = x + dx;
-            for (int dy = -1; dy < 2; dy++) {
-                cury = y + dy;
-                if (!isInBounds(curx, cury)) continue;
-                list.add(new AsciiPoint(curx, cury));
-            }
-        }
-        return list;
-    }
     public ArrayList<AsciiPoint> getFourNeighborList(int x, int y) {
         /* returns all perpendicular neighbors around (x,y) *excluding* (x,y) */
         ArrayList<AsciiPoint> list = new ArrayList<AsciiPoint>();

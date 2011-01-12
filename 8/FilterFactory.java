@@ -10,9 +10,9 @@ public class FilterFactory implements Factory {
         }
 
         if (args[0].equals("median")) {
-            return new MedianOperation();
+            return new MedianOperation(new XBlockGenerator(3));
         } else if (args[0].equals("average")) {
-            return new AverageOperation();
+            return new AverageOperation(new XBlockGenerator(3));
         } else {
             throw new FactoryException(AsciiConstants.errInp);
         }
