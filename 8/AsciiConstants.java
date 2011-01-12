@@ -6,7 +6,6 @@ public class AsciiConstants {
         cmdLoad = "load",
         cmdFilter = "filter",
         cmdFloodfill = "floodfill",
-        cmdHistogram = "histogram",
         cmdPrint = "print",
         cmdReplace = "replace",
         cmdUndo = "undo",

@@ -7,7 +7,7 @@ SOURCES = AsciiException.java AsciiImage.java AsciiShop.java \
 		  MedianOperation.java FactoryException.java \
 		  ClearFactory.java LoadFactory.java Factory.java \
 		  FilterFactory.java ReplaceFactory.java BinaryOperation.java \
-		  BinaryFactory.java Histogram.java FilterOperation.java \
+		  BinaryFactory.java FilterOperation.java \
 		  FloodfillFactory.java FloodfillOperation.java AverageOperation.java \
 		  CircularBlockGenerator.java ReplicateBlockGenerator.java \
 		  SymmetricBlockGenerator.java XBlockGenerator.java BlockGenerator.java

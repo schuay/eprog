@@ -88,10 +88,6 @@ class AsciiShop {
             System.out.print(img.toString());
             System.out.println();
             scanner.nextLine();
-        } else if (cmd.equals(AsciiConstants.cmdHistogram)) {
-            System.out.print(Histogram.getHistogram(img).toString());
-            System.out.println();
-            scanner.nextLine();
         } else if (cmd.equals(AsciiConstants.cmdUndo)) {
             try {
                 img = stack.pop();
