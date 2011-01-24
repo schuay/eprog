@@ -22,9 +22,29 @@ public class SymmetricBlockGenerator extends BlockGenerator {
     }
 
     private int mirror(int ceil, int val) {
-        if (val < 0) return 0 + mod(Math.abs(val) - 1, ceil); /* -1 should result in 0 */
-        else if (val >= ceil) return ceil - mod(val, ceil) - 1; /* ceil should result in ceil - 1 */
-        else return val;
+
+        int mod;    /* offset within bounds */
+        int count;  /* count of transversed images */
+
+        /* nothing to do */
+        if (val >= 0 && val < ceil) return val;
+
+        /* get some basic metrics */
+        mod = mod(val, ceil);
+        if (val < 0)
+            /* adjust for neg. index and make first reflection have count == -1 */
+            count = (val + 1 - ceil) / ceil;
+        else
+            /* first reflection has count == 1 */
+            count = val / ceil;
+
+        if (count % 2 == 0) {
+            /* even reflections, offset from original image */
+            return 0 + mod;
+        } else {
+            /* odd reflections, flipped offset */
+            return ceil - 1 - mod;
+        }
     }
 
 }
