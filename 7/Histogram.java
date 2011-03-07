@@ -38,7 +38,7 @@ public class Histogram {
         /* go through charcounts one by one */
         for (int i = 0; i < charPercentages.length; i++) {
             /* round up */
-            double currentPercentage = Math.ceil(charPercentages[i]);
+            double currentPercentage = charPercentages[i];
 
             for (int y = 1; (maxPercentage * (y - 1)) / (height - 1) < currentPercentage; y++) {
                 if (y == height) continue;
